@@ -1,5 +1,5 @@
-# YvgenijSharovskij.github.io
-main page
+# YvgenijSharovskij.github.io : main page
+
 
 
 <h3>This web site uses:</h3>
