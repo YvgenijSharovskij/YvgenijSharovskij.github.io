@@ -1,0 +1,51 @@
+// ====================================================================================================================
+//  media queries for small, medium and large susy breakpoints
+//
+//  NOTES:
+//  @params: susy-breakpoint([(max-width) OR (min-width] MQ, $susy, no-MQ-fallback-class)
+//  3rd arg is used iff '$breakpoint-no-query-fallbacks: true';
+//  @example: @include MQmin(M) 
+// ====================================================================================================================
+ 
+// breakpoints
+$screen:       "only screen" !default;
+$landscape:    "#{$screen} and (orientation: landscape)" !default;
+$portrait:     "#{$screen} and (orientation: portrait)" !default;
+
+$S:     20rem;   
+$M:     40rem;     
+$L:     74rem;  
+
+// max-width
+
+@mixin MQmax($canvas) {
+	@if $canvas == S {
+   		@include susy-breakpoint((max-width) $S, $susy) { @content; } 
+  	}
+  	@else if $canvas == M {
+   		@include susy-breakpoint((max-width) $M, $susy) { @content; } 
+  	}
+  	@else if $canvas == L {
+   		@include susy-breakpoint((max-width) $L, $susy) { @content; } 
+  	}
+  	@else {
+    	@warn "Unknown breakpoint passed in MQmax(`#{$canvas}`). ";
+  }
+}
+   
+// min-width 
+
+@mixin MQmin($canvas) {
+  	@if $canvas == S {
+  		@include susy-breakpoint((min-width) $S, $susy) { @content; } 
+  	}
+ 	@else if $canvas == M {
+   		@include susy-breakpoint((min-width) $M, $susy) { @content; } 
+  	}
+  	@else if $canvas == L {
+   		@include susy-breakpoint((min-width) $L, $susy) { @content; } 
+  	}
+	@else {
+    	@warn "Unknown breakpoint passed in MQmin(`#{$canvas}`).";
+    }
+}

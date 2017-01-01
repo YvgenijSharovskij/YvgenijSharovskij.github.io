@@ -1,0 +1,155 @@
+// ====================================================================================================================
+//  px to rem conversion and rem font size
+// ====================================================================================================================
+
+@function getRem($size) {
+	$remSize: $size / 16px;
+	@return $remSize * 1rem;
+}
+
+@mixin font-size($size: 16) {	// default font-size: 16px
+	font-size: $size;			// px fall-back
+	font-size: getRem($size);
+}
+
+
+// ====================================================================================================================
+//  centering
+// ====================================================================================================================
+ 
+@mixin center($xy:xy) {
+	@if $xy == xy {
+		left: 50%;
+		top: 50%;
+    	bottom: auto;
+    	right: auto;
+		transform: translateX(-50%) translateY(-50%);
+  	} @else if $xy == x {
+    	left: 50%;
+    	right: auto;
+    	transform: translateX(-50%);
+  	} @else if $xy == y {
+    	top: 50%;
+    	bottom: auto;
+    	transform: translateY(-50%);
+  	}
+}
+
+
+// ====================================================================================================================
+//  font antialiasing
+//
+//  note: this also helps with thin fonts when using 'backface-visibility: hidden'
+// ====================================================================================================================
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ====================================================================================================================
+//  CSS alternative for <picture> <source srcset="..."> </picture> for
+//	multiple background images in either WebP or PNG format
+//  with Modernizr .no-webp and .no-js classes:
+//		- WebP format not supported := .no-webp
+//		- JS turned off => .no-js not auto-removed from <html> by Modernizr
+//
+//  NOTES:
+//  as a single file name $img-filename variable is used, 
+//  the relevant img files have a corresponding naming system
+// ====================================================================================================================
+
+@mixin bg($bg-class, $img-filename) {
+	
+	.webp &.#{$bg-class} {  
+  			background-image: url('../img/#{$img-filename}.webp');	
+	}
+	
+	.no-webp &.#{$bg-class}, 
+	.no-js &.#{$bg-class} {   
+  			background-image: url('../img/#{$img-filename}.png');
+	}
+}
+
+@mixin bg-srcset($bg-class, $img-filename) {
+	
+	@include bg($bg-class, '#{$img-filename}');	
+	
+	// breakpoint: $M = 40 rem = 640px
+	// ------------------------------------------------------
+/*	@include MQmin(M) {
+			@include bg($bg-class, '#{$img-filename}');	 
+	}*/
+	
+/*	@include MQmax(M) {
+			@include bg($bg-class, '#{$img-filename}-640');	 
+	}*/
+	
+	// 2x
+	// ------------------------------------------------------
+	
+	@media
+  		(-webkit-min-device-pixel-ratio: 2) and (min-width: $M), 
+  		(min-resolution: 192dpi) and (min-width: $M) {
+			@include bg($bg-class, '#{$img-filename}@2x');	
+	}
+	
+	// 2x & $M
+	// ------------------------------------------------------
+	
+
+/*	@media
+  		(-webkit-min-device-pixel-ratio: 2) and (max-width: $M), 
+  		(min-resolution: 192dpi) and (max-width: $M) {
+			@include bg($bg-class, '{#{$img-filename}}-640@2x');	
+	}*/
+
+/*	@media
+  		(-webkit-min-device-pixel-ratio: 2) and (min-width: $M), 
+  		(min-resolution: 192dpi) and (min-width: $M) {
+			@include bg($bg-class, '{#{$img-filename}}@2x');	
+	}*/
+}
+
+
+// ====================================================================================================================
+//  border radius with background cliping
+// ====================================================================================================================
+
+@mixin border-clip($radius: .25em) {
+	border-radius: $radius;
+	background-clip: padding-box;		// specifies the painting area of the background to be clipped to the padding box
+}
+
+
+// ====================================================================================================================
+//  opacity with alpha filter fallback
+// ====================================================================================================================
+
+//@mixin opacity($opacity) {
+//  opacity: $opacity;
+//  $opacity-ie: $opacity*100;
+//  filter: alpha(opacity=$opacity-ie); // alpha filter fallback for legacy IE
+//}
+
+// ====================================================================================================================
+//  line-height as rem with px fallback
+// ====================================================================================================================
+
+//@mixin line-height($heightValue: 12 ){
+//    line-height: $heightValue + px; 	// px fallback
+//    line-height: (0.125 * $heightValue) + rem;
+//}
+
+
+// ====================================================================================================================
+//  clearfix
+// ====================================================================================================================
+ 
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}

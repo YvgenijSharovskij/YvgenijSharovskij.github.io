@@ -1,0 +1,71 @@
+// ====================================================================================================================
+//  z-index
+//
+//  NOTES:
+//  handlng of z-axis stacking context using a map/hash with a spacing of 10;
+//  allows the use of nested maps,
+//  cf: https://www.sitepoint.com/better-solution-managing-z-index-sass/
+// ====================================================================================================================
+
+
+$z-items: (
+	"off-canvas-wrapper" 	: 		-90,		// fixed
+	"page-container" 		: 		0,
+	"main-content" 			: 		10,
+	"fixed-bg" 				: 		10,
+	"down-arrow" 			: 		10,
+	"scrolling-bg" 			: 		20,
+	"scroll-hide-header" 	: 		20,			// fixed
+	"secondary-nav" 		: 		10,
+	"menu-toggle" 			: 		20,
+	"about-popup" 			: 		30,			// fixed
+	"browserupgrade" 		: 		90
+); 
+
+
+/**
+ * @description 			 		passes the $z-items map using a custom map-get()
+ *
+ * @method z-map 
+ *
+ * @param {map key} 	$key	-	$z-items map-item 
+ *
+ * @return 						- 	if mas-has-key(), returns the $z-items map with get-z-map($z-items, $key), <br> 
+ *									else, prints a @warn message and returns null (empty CSS)
+ *
+ * @example
+ * z-index: z-map(main-content);
+ *
+ */
+@function z-map($key) {	
+	@if map-has-key($z-items, $key) {
+    	@return get-z-map($z-items, $key);
+  	}
+	
+	@warn "@function z-map($key) : Unknown $key `#{$key}` in $z-items map.";
+	@return null;
+}
+
+
+/**
+ * @description 			 		passes the $z-items map using a map-get() (for-)@each loop; 
+ *									this allows nested maps
+ *
+ * @method get-z-map
+ *
+ * @param {map} 		$map	-	$z-items map
+ * @param {map item} 	$items	-	$z-items map-item; param list with a variable number of params
+ *
+ * @return 						- 	$z-items $map using map-get()
+ *
+ * @example
+ * z-index: z-map(main-content);
+ *
+ */
+@function get-z-map($map, $items...) {
+	@each $item in $items {
+    	$map: map-get($map, $item);
+  	} 
+
+  	@return $map;
+}

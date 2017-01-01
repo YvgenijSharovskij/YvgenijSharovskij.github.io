@@ -1,0 +1,228 @@
+// ====================================================================================================================
+//  containers for separate off- and on-canvas grids;
+//  and transforms
+//
+//  NOTES:
+//  used a fixed wrapper for .off-canvas (see _mobile.scss)
+// ====================================================================================================================
+
+
+$total-columns  : 12;
+$column-width   : 4em;
+$gutter-width   : 1/4;
+$grid-padding   : $gutter-width;
+
+$susy: (
+  columns: $total-columns,
+  container: 100%,
+  gutters: $gutter-width,
+//  gutter-position: inside,
+  global-box-sizing: border-box,
+  
+//   use-custom: (rem: true )
+  
+//    debug: (
+//    image: show-columns,
+//    output: overlay,
+//    toggle: bottom left
+//  )
+);
+
+@include border-box-sizing;
+
+// set MQ fallback class wrapper as 3rd argument of susy-breakpoint() 
+// $breakpoint-no-query-fallbacks: true;
+
+.page-container {
+  	overflow-x: hidden;	// hide x-scrollbar when open
+}
+
+// ====================================================================================================================
+//  off-canvas
+// ====================================================================================================================
+   
+.off-canvas-wrapper {
+  	position: fixed;
+  	top: 0;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+	transform: translateZ(0);
+	will-change: transform;
+	transition: transform .5s;
+	transform: translateX(0);
+/*	transform: translate3d(0,0,0);*/	// translate3d is not supported in legacy IE, 2D translate is used instead
+	backface-visibility: hidden;
+	z-index: z-map(off-canvas-wrapper);	
+}
+
+.page-container.is-open .off-canvas-wrapper {
+	backface-visibility: hidden;
+	z-index: z-map(page-container);
+}
+
+.page-container.is-open .off-canvas {
+ 	transition: all 0.5s ease-in-out;
+	transform: translateZ(0);
+	will-change: transform;
+	transform: translateX($off-canvas-width*2);
+/*  transform: translate3d($off-canvas-width*2, 0, 0);*/
+  	backface-visibility: hidden;
+}
+
+.page-container.is-close .off-canvas {
+  	transition: all 0.5s ease;
+	transform: translateZ(0);
+	will-change: transform;
+	transform: translateY(0);
+/*  transform: translate3d(0, 0, 0);*/
+	backface-visibility: hidden;
+}
+
+.off-canvas {
+  	@include container(6);  
+	    @include span(6);
+  	position: absolute;
+  	width: $off-canvas-width; 
+  	left: -$off-canvas-width; 
+  	top: 0; 
+  	bottom: 0;
+  	background-color: $off-canvas-bg;
+	transform: translateZ(0);
+	will-change: transform;
+	transform: translateX(0);
+/*	transform:translate3d(0,0,0);*/
+	backface-visibility: hidden;	
+}
+
+// ====================================================================================================================
+//  on-canvas 
+// ====================================================================================================================
+
+.on-canvas {
+	@include container(12);
+  	overflow-x: hidden;
+	backface-visibility: hidden;	
+	min-height: 100%;
+/*  	margin-bottom: -$footer-height; 	// space for the sticky footer*/
+	
+	&:after {
+  		@include clearfix;
+	}
+}
+
+.page-container.is-open .on-canvas {
+  	transition:all 0.5s ease-in-out;
+	transform: translateZ(0);
+	will-change: transform;
+	transform: translateX($off-canvas-width);
+/*  transform: translate3d($off-canvas-width, 0, 0);*/
+	backface-visibility: hidden;
+}
+
+.page-container.is-close .on-canvas {
+  	transition:all 0.5s ease;
+    transition:all 0.5s ease-in-out;
+	transform: translateZ(0);
+	will-change: transform;
+	transform: translateX(0);
+/*  transform: translate3d(0, 0, 0);*/
+  	backface-visibility: hidden;
+}
+
+.primary-nav {
+	@include span(6 at 6 of 12 last);
+
+		
+	ul {
+		padding-right: gutters();
+	}
+		
+	 > ul li {
+		@include span(3.9 of 12);
+		max-width: 10em;
+    }
+	
+	@include MQmax(M) {
+		@include clearfix;
+    	@include span(8 at 4 of 12);
+		@include push(3);
+		
+		ul {
+			padding-right: gutters();
+		}
+		
+	  	> ul li {
+			@include span(3 of 12);
+
+    	}
+  	} 
+	
+/*	@include MQmin(L) {
+		@include span(6 at 6 of 12 last);
+
+		
+		ul {
+		padding-right: gutters();
+	}
+		
+	 > ul li {
+		@include span(2 of 12);
+    }
+	}*/
+}
+
+.secondary-nav {
+	@include clearfix;
+}
+
+
+// ====================================================================================================================
+//  on-canvas: about z-layer popup
+// ====================================================================================================================
+
+.about-popup {
+	> div {
+		> * {
+    		@include span(8 of 12);
+			@include push(2);
+		}
+	}
+		
+	@include MQmax(S) {
+		> div {
+			> * {
+    			@include span(9 of 12);
+				@include push(1);
+			}
+		}	
+	}
+}
+
+// ====================================================================================================================
+//  on-canvas: footer 
+// ====================================================================================================================
+
+.footer-container {
+	padding: gutters();
+	
+	.footer-links {
+		@include span(4.5 at 1 of 12);
+	}
+	
+	.footer-copy {
+		@include span(2.5 of 12 omega); 	
+	}
+	
+	@include MQmax(M) {
+		text-align: center;
+		
+		.footer-links {
+			@include span(12 of 12); 
+		}
+		
+		.footer-copy {
+			@include span(12 of 12); 
+		}
+	}
+}

@@ -1,0 +1,115 @@
+// ====================================================================================================================
+//  off-canvas mobile style 
+//  and hamburger icon
+//
+//  NOTES:
+//  see: _layout.scss
+// ====================================================================================================================
+
+// ====================================================================================================================
+//  off-canvas
+// ====================================================================================================================
+
+.off-canvas {
+	ul  {
+  		margin: 0;
+  		padding: 0;
+		
+		li {
+			padding-bottom: gutters()*5;
+  			padding-top: gutters()*5;
+			padding-left: 2em;
+  			text-decoration: none;
+  			border-bottom: 1px solid #000;
+			
+			&:first-child {							// for the text on top of the off-canvas menu
+				height: $off-canvas-top-height;		// align with primary nav
+				padding: 1em 1em 1em 2em;
+				font-weight: bold;
+				border-bottom: 2px solid #000;
+			}
+			
+			a {
+  				display: block;
+				text-align: left;
+  				color: $color-6;
+  				opacity: .6;
+
+  				&:hover {
+					opacity: 1;
+				}
+			}
+			
+			&:hover, &.active {
+				background-color: darken($off-canvas-a-hover, 5%);
+			}
+
+			
+			&.off-canvas-header {
+  				background-color: darken($off-canvas-header-bg, 5%);
+  				color: $off-canvas-header;
+				/*	cursor: pointer; */
+			}
+		}
+	}
+}
+
+
+// ====================================================================================================================
+//  mobile menu hamburger icon
+// ====================================================================================================================
+
+.mobile-icon {
+	position: relative;
+	display: inline-block;
+	height: 6em;
+  	width: 6em;
+  	cursor: pointer;
+  	@include font-size(5px);
+  	transition: all 0.5s ease-in-out;
+
+ 	span {
+  		display: block;
+  		background: $color-4;
+  		border-radius: 2em;
+  		height: 0.8em;
+  		position: absolute;
+  		transition: all 0.5s ease-in-out;
+  		width: 100%;
+		backface-visibility: hidden;	// to prevent possible flickering when transforming; 
+								    	// changes font-smoothing, see: @mixin font-smoothing
+		
+		left: 0;
+		&:nth-child(1) { top: 1em; }
+		&:nth-child(2) { top: 2.6em; }
+		&:nth-child(3) { top: 4.2em; }
+  	}
+	
+	@include MQmin(M) {
+		visibility: hidden;
+		aria-hidden: true;
+	}
+}
+
+.mobile-icon.toggle-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(1.1em, 1.1em);
+}
+
+.mobile-icon.toggle-icon span:nth-child(2) {
+  opacity: 0;
+  transition: none;
+}
+
+.mobile-icon.toggle-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(1.1em, -1.1em);
+}
+
+.menu-toggle {
+	position: absolute;
+  	left: 0;
+  	top: 0;
+  	margin: 2em 4%;
+	z-index: z-map(menu-toggle);
+	
+	>span { background: $color-5; }
+}
