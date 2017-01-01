@@ -1,0 +1,22 @@
+{
+  "name": "bower main",
+  "authors": [
+    "Admin <ysharovskij_github@yahoo.com>"
+  ],
+  "description": "man github page",
+  "main": "style",
+  "keywords": [
+    "main"
+  ],
+  "license": "MIT",
+  "homepage": "https://YvgenijSharovskij.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bourbon": "^4.2.7",
+    "susy": "^2.2.12"
+  }
+}

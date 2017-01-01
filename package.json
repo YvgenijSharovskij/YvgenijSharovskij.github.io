@@ -1,0 +1,32 @@
+{
+  "name": "main_page",
+  "version": "1.0.0",
+  "description": "main_page",
+  "dependencies": {
+    "imagemin": "^5.2.2",
+    "imagemin-webp": "^4.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-nodemon": "^0.5.4",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-execute": "^0.2.2",
+    "grunt-jsdoc": "^2.1.0",
+    "grunt-run": "^0.6.0",
+    "grunt-shell": "^2.1.0",
+    "load-grunt-tasks": "^3.5.2"
+  },
+  "scripts": {
+    "test": "etc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YvgenijSharovskij/YvgenijSharovskij.github.io/"
+  },
+  "author": "Yvgenij Sharovskij",
+  "license": "MIT"
+}
