@@ -1,0 +1,175 @@
+// ====================================================================================================================
+//  susy grid and layout
+//
+//  NOTES:
+// ====================================================================================================================
+
+
+$total-columns  : 12;
+$column-width   : 4em;
+$gutter-width   : 1/4;
+$grid-padding   : $gutter-width;
+
+$susy: (
+  columns: $total-columns,
+  container: 100%,
+  gutters: $gutter-width,
+/*  gutter-position: inside,*/
+  global-box-sizing: border-box,
+  
+/*   use-custom: (rem: true )*/
+  
+/*    debug: (
+    image: show-columns,
+    output: overlay,
+    toggle: bottom left
+  )*/
+);
+
+@include border-box-sizing;
+
+// set MQ fallback class wrapper as 3rd argument of susy-breakpoint() 
+// $breakpoint-no-query-fallbacks: true;
+
+
+// ====================================================================================================================
+//  page container
+// ====================================================================================================================
+
+.page-container {
+	@include container(12 nest);
+  	overflow-x: hidden;	// hide x-scrollbar
+	margin-bottom: 4em;
+}
+
+
+// ====================================================================================================================
+//  header grid
+// ====================================================================================================================
+
+header {
+	@include span(8 at 2 of 12);
+	@include push(2);
+	
+	@include MQmax(M) {
+    	@include span(9 at 1 of 12);
+		@include push(0.5);
+	}
+	
+//	.nav-home {
+//		@include span(4 of 12);
+//		@include push(11.4);
+//		//@include clearfix;
+//		
+//		@include MQmax(L) {
+//			@include span(4 at 3 of 12);
+//			@include push(10.2);
+//			// padding-right: gutters()*27;
+//			padding-right: 45%;
+//		}
+//		
+//		@include MQmax(M) {
+//			@include span(3 of 12); 
+//			@include push(12);
+//		}
+//	}
+}
+
+
+
+// ====================================================================================================================
+//  projects grid
+// ====================================================================================================================
+
+.projects-container { 
+	@include span(8 at 2 of 12);
+	@include push(2);
+	
+	@include MQmax(M) {
+    	@include span(9 at 1 of 12);
+		@include push(0.5);
+	}
+}
+
+
+.project-item {
+	@include MQmin(M) {
+		@include span(4 at 3 of 12);
+		@include push(2);
+		margin: 0 5% 2em 0;
+
+		&:nth-child(n) {
+			margin-right: gutters();
+		}
+	}
+
+	@include MQmin(L) {
+		@include span(3 at 3 of 12);
+		@include push(2);
+		margin: 0 7% 2em 0;
+
+		&:nth-child(n) {
+			margin-right: gutters()*2;
+		}
+	}
+}
+
+//.project-open {
+////	//@include container(12);
+////	@include span(8 at 2 of 12);
+////	//@include push(2);
+////	
+////	.open-left {
+////		@include span(3 at 2 of 12);
+////		@include push(2);
+////	}
+////	
+////	.project-info {
+////		@include span(3 at 5 of 12);
+////		@include push(2);
+////	}
+////	
+//
+//	// @include container(12);
+//	
+////	.open-left {
+////		@include span(3 at 4 of 12);
+////	}
+////	
+////	.project-info {
+////		@include span(5 at 7 of 12);
+////	}
+//	
+//}
+
+
+// ====================================================================================================================
+//  footer 
+// ====================================================================================================================
+
+.footer-container {
+	padding: gutters();
+	
+	.footer-links {
+		@include span(4.5 at 1 of 12);
+	}
+	
+	.footer-copy {
+		@include span(2.5 of 12 omega); 	
+	}
+	
+	@include MQmax(M) {
+		text-align: center;
+		
+		.footer-links {
+			@include span(12 of 12); 
+		}
+		
+		.footer-copy {
+			@include span(12 of 12); 
+		}
+	}
+}
+
+
+

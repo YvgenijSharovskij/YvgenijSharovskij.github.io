@@ -16,16 +16,16 @@ $susy: (
   columns: $total-columns,
   container: 100%,
   gutters: $gutter-width,
-//  gutter-position: inside,
+/*  gutter-position: inside,*/
   global-box-sizing: border-box,
   
-//   use-custom: (rem: true )
+/*   use-custom: (rem: true )*/
   
-//    debug: (
-//    image: show-columns,
-//    output: overlay,
-//    toggle: bottom left
-//  )
+/*    debug: (
+    image: show-columns,
+    output: overlay,
+    toggle: bottom left
+  )*/
 );
 
 @include border-box-sizing;
