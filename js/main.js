@@ -1,13 +1,15 @@
 /**
- * @fileOverview JQuery main.js, dev
+ * @fileOverview  main.js, dev
  * @version 1.0
  */
  
  
-'use strict';
+// 'use strict';
 
 
 (function($, window, document) {
+	
+'use strict';
 	
 // outer namespace
 var globalLib = {
@@ -135,8 +137,9 @@ $(document).ready(function($){
 		
 			// map current scroll item
 			cur = scrollItems.map(function(){
-			if ($(this).offset().top < fromTop)
+			if ($(this).offset().top < fromTop) {
 				return this;
+			}
 			});  
    
 			// id of the current element
@@ -380,7 +383,7 @@ $(document).ready(function($){
 	// ================================================================================================================	
 	
 	// open
-	$about.on('click', function(event) {
+	$about.on('click', function() {
 		console.log('$about.on(click');
 		$aboutPopup.addClass('is-visible');
 		$body.addClass("no-scroll");
@@ -417,12 +420,12 @@ function $buo_f(){
 	var e = document.createElement("script"); 
 	e.src = "//browser-update.org/update.min.js"; 
 	document.body.appendChild(e);
-};
+}
 
 try {
-	document.addEventListener("DOMContentLoaded", $buo_f, false)
+	document.addEventListener("DOMContentLoaded", $buo_f, false);
 } catch(e) {
-	window.attachEvent("onload", $buo_f)
+	window.attachEvent("onload", $buo_f);
 }
 
 }(window.jQuery, window, document));
