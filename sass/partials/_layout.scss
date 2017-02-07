@@ -71,10 +71,10 @@ $susy: (
 }
 
 .page-container.is-close .off-canvas {
-  	transition: all 0.5s ease;
+  	transition: all 0.5s ease-out;
 	transform: translateZ(0);
 	will-change: transform;
-	transform: translateY(0);
+	transform: translateX(0);
 /*  transform: translate3d(0, 0, 0);*/
 	backface-visibility: hidden;
 }
@@ -103,7 +103,7 @@ $susy: (
 	@include container(12);
   	overflow-x: hidden;
 	backface-visibility: hidden;	
-	min-height: 100%;
+	//min-height: 100%;
 /*  	margin-bottom: -$footer-height; 	// space for the sticky footer*/
 	
 	&:after {
@@ -112,7 +112,7 @@ $susy: (
 }
 
 .page-container.is-open .on-canvas {
-  	transition:all 0.5s ease-in-out;
+  	transition: all 0.5s ease-in-out;
 	transform: translateZ(0);
 	will-change: transform;
 	transform: translateX($off-canvas-width);
@@ -121,8 +121,7 @@ $susy: (
 }
 
 .page-container.is-close .on-canvas {
-  	transition:all 0.5s ease;
-    transition:all 0.5s ease-in-out;
+    transition: all 0.5s ease-out;
 	transform: translateZ(0);
 	will-change: transform;
 	transform: translateX(0);
