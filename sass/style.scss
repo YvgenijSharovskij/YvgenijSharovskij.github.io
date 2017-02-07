@@ -3,7 +3,9 @@
 // ====================================================================================================================
 
 
-@import "compass"; 				// http://compass-style.org/ 
+@import "compass"; 				// http://compass-style.org/  
+
+@import "compass/layout/stretching";
 
 @import "susy";					// http://susy.oddbird.net/
 
@@ -48,8 +50,20 @@ nav ul li a:hover {
 //  common
 // ====================================================================================================================
    
-/* transition elements on resize */
-* { // all elements
+/* transition elements: common*/
+//* // all elements
+h1, 
+h2, 
+h3, 
+.primary-nav a,
+.secondary-nav a,
+.main-content a,
+.about-popup a,
+.off-canvas ul li a,
+.footer-links ul li a,
+.off-canvas,
+.on-canvas,
+.off-canvas a {
 	transition: all 1s;
 }
  
@@ -155,6 +169,12 @@ code.css-value {
     overflow: hidden;
 }
 
+@include MQmax(M) {
+	 .touch {
+     	 overflow-scrolling: touch;
+      }
+}
+
 /*[aria-hidden="true"]  { display: none; }
 [aria-hidden="false"] { display: block; }*/
 
@@ -216,7 +236,7 @@ code.css-value {
 
 .fixed-bg {
 	position: relative; 
-	height: 768px;
+	//height: 768px;
 /*	min-height: 768px;*/
 	height: 100vh;
 	background-size: cover;
@@ -225,7 +245,7 @@ code.css-value {
 	background-attachment: scroll;
 	background-color: $color-0; 	// fallback if background-image is not loaded 
   	/* hardware Acceleration */		
-    transform: translateZ(0);
+    transform:  translateZ(0);
   	z-index: z-map(fixed-bg); 
 	
 	
@@ -244,7 +264,7 @@ code.css-value {
 
 .scrolling-bg {
 	position: relative;
-	min-height: 100%;
+	//min-height: 100%;
 	padding: 4em 0;
 	line-height: 1.6;
 	box-shadow: 0 0 50px rgba(#000, .5);
@@ -286,7 +306,7 @@ code.css-value {
 
 	@include MQmin(M) {
 		padding: 8em 0;
-/*		@include font-size(14px);*/
+/*		@include font-size(16px);*/
 		line-height: 2;
 		font-weight: 300;
 	}
@@ -343,9 +363,9 @@ code.css-value {
 	padding-top: 1em;
 	
 	a {
-		display: inline-block;
-		color:  $color-5;
-		opacity: 1;
+	display: inline-block;
+	color:  $color-5;
+	opacity: 1;
 
 		&:hover {
 			opacity: 0.8;
@@ -522,15 +542,11 @@ a.button {
 		overflow-y: auto;
 		line-height: 1.8rem;
 		
-//		> * {
-//			max-width: $M;	// 40rem
-//			margin-left: auto;
-//			margin-right: auto;
-//		}
-	}
-	
-	h2{
-		line-height: 2.2;
+/*		> * {
+			max-width: $M;	// 40rem
+			margin-left: auto;
+			margin-right: auto;
+		}*/
 	}
 	
 	.bg-about {
@@ -541,6 +557,11 @@ a.button {
 	
 	.bg-1 {
 		background-color: lighten($color-3, 15%);
+	}
+	
+	h3{
+		line-height: 3.2em;
+		
 	}
 	
 	ul {
