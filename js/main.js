@@ -4,7 +4,7 @@
  */
  
  
-// 'use strict';
+// 'use strict'; 
 
 
 (function($, window, document) {
@@ -21,6 +21,7 @@ var globalLib = {
 $(window).on('load', function(){ 			
 	globalLib.ON_LOAD_WIDTH = $(window).width();
 	globalLib.ON_LOAD_HEIGHT = $(window).height();
+	//$('.fixed-bg').css('height', globalLib.ON_LOAD_HEIGHT + 'px');		
 });
 
 
@@ -226,6 +227,7 @@ $(document).ready(function($){
 			globalLib.SESSION = requestAnimationFrame(ModernizrMQCheck); // invoke ModernizrMQCheck() on resize
 			
 			globalLib.ON_LOAD_WIDTH = $(window).width();
+			//$fixedBg.css('width', globalLib.ON_LOAD_WIDTH + 'px');	
 
 			 // delete ON_LOAD_WIDTH;
 
@@ -233,15 +235,17 @@ $(document).ready(function($){
 			mainHeaderHeight = $mainHeader.outerHeight();
 			
 			globalLib.ON_LOAD_HEIGHT = $(window).height();
+			//$fixedBg.css('height', globalLib.ON_LOAD_HEIGHT + 'px');	
 		}
 	});
 	requestAnimationFrame(ModernizrMQCheck);
+	
 
 
 	// ================================================================================================================
 	//  scroll-hide header nav
 	//
-	//  NOTES:
+	//  NOTES: 
 	//  requestAnimationFrame polyfill used for IE <= 9
 	// ================================================================================================================
 
