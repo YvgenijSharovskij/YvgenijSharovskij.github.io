@@ -5,8 +5,6 @@
 
 @import "compass"; 				// http://compass-style.org/  
 
-@import "compass/layout/stretching";
-
 @import "susy";					// http://susy.oddbird.net/
 
 @import 'partials/variables'; 	// font, colors, etc.
@@ -24,27 +22,6 @@
 @import 'partials/boilerplate'; // https://html5boilerplate.com/ 
 
 
-
-// ====================================================================================================================
-//  animation 
-// ====================================================================================================================
-
-
-/*@keyframes warning { 
-	from {    
-		text-shadow: 0px 0px 4px #000000;
-	}
-	50% {
-		text-shadow: 0px 0px 6px #000000;
-	}
-	to {
-		text-shadow: 0 0 4px #000000;
-	}
-}
-
-nav ul li a:hover {
-	animation: warning 1.5s infinite ease-in;
-}*/
 
 // ====================================================================================================================
 //  common
@@ -136,6 +113,7 @@ h3 {
 
 a {
 	text-decoration: none;
+	-webkit-tap-highlight-color: $color-0;		// non-standard 
 }
 
 code.html-style {
@@ -190,7 +168,6 @@ code.css-value {
 	max-width: $M; 
 	margin: 0 auto auto auto;
 	min-height: 100%;
-	
 	
 	&::after {
 		@include clearfix;
@@ -248,11 +225,11 @@ code.css-value {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
-	background-color: $color-0; 	// fallback if background-image is not loaded 
+	//background-color: $color-0; 	// fallback if background-image is not loaded 
     //transform:  translateZ(0);
 	min-width: 100%;
   	min-height: 100%;
-  	z-index: z-map(fixed-bg); 
+  	z-index: z-map(fixed-bg);  
 	
 	@include bg-srcset(bg-0, background-top);
 	@include bg-srcset(bg-1, background-java);
@@ -264,6 +241,7 @@ code.css-value {
 
 	@include MQmax(M) {
 		background-attachment: scroll; 
+		
 	}
 }
 
@@ -652,6 +630,27 @@ a.button {
 		}
 	}
 }
+
+// ====================================================================================================================
+//  animation 
+// ====================================================================================================================
+
+
+/*@keyframes warning { 
+	from {    
+		text-shadow: 0px 0px 4px #000000;
+	}
+	50% {
+		text-shadow: 0px 0px 6px #000000;
+	}
+	to {
+		text-shadow: 0 0 4px #000000;
+	}
+}
+
+nav ul li a:hover {
+	animation: warning 1.5s infinite ease-in;
+}*/
 
 // ====================================================================================================================
 //  browser upgrade message,

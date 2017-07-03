@@ -11,7 +11,7 @@
 
 @import 'partials/zindex_archive'; 				 // z-index
 
-@import 'partials/mq'; 					  // media queries mixin
+@import 'partials/mq'; 					 				 // media queries mixin
 
 @import 'partials/mixins'; 								// general mixins
 
@@ -238,6 +238,10 @@ header {
 		display: block;
 		@include border-clip(.25em);
 		width: 100%;
+		
+		@include MQmax(M) {
+				//margin: .55em;
+		}
 	}
 
 	// empty space after the project-item is open 
@@ -352,8 +356,9 @@ header {
 			@include border-clip(.25em);
 			
 			@include MQmax(M) {
-				margin-right: .25em;
-				width: 70%;
+				//margin-right: .25em;
+				//width: 70%;
+				display: none;
 			}
 			
 			@include MQmin(M) {
