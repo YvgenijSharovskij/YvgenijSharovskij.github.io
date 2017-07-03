@@ -148,19 +148,13 @@ $(document).ready(function($){
 			leftSelected 		 = 		image.offset().left,
 			widthSelected 		 = 		image.width(),
 			heightSelected		 = 		image.height(),
-			finalLeft			 = 		(finalWidth)/2,
+			finalLeft			 = 		finalWidth/2,
 			finalHeight			 = 		finalWidth*heightSelected/widthSelected,
-			finalTop			 = 		(windowHeight - finalHeight)/2,
 			closingScale		=		3;		// scale factor for closing animation
 		
 		
 		if(Modernizr.mq('screen and (max-width: 40rem)')) {	// mobile 
-//			resizeProjectOpen();
-			projectOpenLeftNew =  ($(window).width())/8;
-			projectOpenTopNew = ($(window).height())/8;
-			projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth) 
-							? $(window).width()*0.8 
-							: $projectOpenWidth;
+			setResizeProject();
 		}
 
 		if(animationType == 'open') {
@@ -171,12 +165,12 @@ $(document).ready(function($){
 			    'left': leftSelected + 'px',
 			    'width': widthSelected + 'px',
 			}).velocity({										// animate project-left
-			    'top': finalTop + 'px',
+			    'top': projectOpenTopNew + 'px',
 			    'left': finalLeft +'px',
 			    'width': finalWidth +'px',
 			}, 900, [400, 20], function(){					
 				$(''+tempId+'').addClass('open-animate').velocity({ 
-					//'top': projectOpenTopNew + 'px',
+					'top': projectOpenTopNew + 'px',
 					'left': projectOpenLeftNew + 'px',
 			    	'width': projectOpenWidthNew + 'px',
 				}, 300, 'ease-in' ,function(){					// we must go deeper...
@@ -186,7 +180,7 @@ $(document).ready(function($){
 			}).addClass('is-visible');
 		} else if(animationType == 'close') {		// tempId is not needed
 			$projectOpen.removeClass('add-info').velocity({
-			    'top': finalTop + 'px',
+			    'top': projectOpenTopNew + 'px',
 			    'left': finalLeft+'px',
 			    'width': finalWidth + 'px',
 			}, 300, 'ease-out', function() { 
@@ -260,21 +254,12 @@ $(document).ready(function($){
 
 	/**
 	 * @description 								changes the 'top', 'left' and 'width' css values of $projectOpen; <br>
-	 *												invoked on window.resize()
+	 *															invoked on window.resize()
 	 * @method resizeProjectOpen
 	 * 
 	 */
 	function resizeProjectOpen() {
-		projectOpenLeftNew = ($(window).width() - $projectOpen.width())/2;
-		projectOpenTopNew = ($(window).height() - $projectOpen.height())/2;
-		projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth) 
-							? $(window).width()*0.8 
-							: $projectOpenWidth;
-		
-		if(Modernizr.mq('screen and (max-width: 40rem)')) {	// mobile 
-			projectOpenLeftNew =  $(window).width()/8;
-			projectOpenTopNew = $(window).height()/8;  
-		}
+		setResizeProject();
 						
 		$projectOpen.css({
 		    'top': projectOpenTopNew +'px',
@@ -282,6 +267,21 @@ $(document).ready(function($){
 			'width': projectOpenWidthNew +'px'
 		});
 	} 
+	
+		/**
+	 * @description 								sets the  'top', 'left' and 'width' css values of $projectOpen; <br>
+	 *															(invoked in multiple places and hence put in a function)
+	 * @method resizeProjectOpen
+	 * 
+	 */
+	function setResizeProject() {
+	//		projectOpenTopNew = ($(window).height() - $projectOpen.height())/2;
+			projectOpenLeftNew = ($(window).width())/8;
+			projectOpenTopNew = ($(window).height())/8;
+			projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth) 
+								? $(window).width()*0.8 
+								: $projectOpenWidth;
+	}
 	
 });
 
