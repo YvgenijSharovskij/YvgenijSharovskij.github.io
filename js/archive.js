@@ -17,13 +17,13 @@ $(document).ready(function($){
 
 	var $projectOpen						= 	 	$('.project-open'),
 		$projectOpenWidth				=	 	$('.project-open').outerWidth(),		// includes padding
-		openLeftWidth						=		400,									// width of .open-left
+		openLeftWidth						=		400,														// width of .open-left
 		$body				 						=	 	$('body'),
-		projectOpenLeftNew 	 		  = 	 	0,										// set on resize()
-	  	projectOpenTopNew  	 		 = 	 	0,										// set on resize()
-	  	projectOpenWidthNew			= 	 	0,										// set on resize()
-//		$closeX 			 						=   	$('.close-x'),							// css "X" for closing
-		tempId				 						=   	0,										// href anchor
+		projectOpenLeftNew 	 		  = 	 	0,															// set on resize()
+	  	projectOpenTopNew  	 		 = 	 	0,																// set on resize()
+	  	projectOpenWidthNew			= 	 	0,															// set on resize()
+//		$closeX 			 						=   	$('.close-x'),										// css "X" for closing
+		tempId				 						=   	0,															// href anchor
 		$projectContainerLinks			=		$('.projects-container a'),
 		$onScrollAnimate 					= 		$('.onScroll-animate'),
 		// hammer.js (without JQuery plugin):
@@ -143,16 +143,25 @@ $(document).ready(function($){
 	 */
 	function velocityProjectOpen(image, finalWidth, $projectOpenWidth, animationType, tempId) {
 		var parentProjectItem	 = 		image.parent('.project-item'),
+			windowHeight		 = 		$(window).height(),
 			topSelected 		 = 		image.offset().top - $(window).scrollTop(),
 			leftSelected 		 = 		image.offset().left,
 			widthSelected 		 = 		image.width(),
 			heightSelected		 = 		image.height(),
-			windowWidth			 = 		$(window).width(), 
-			windowHeight		 = 		$(window).height(),
-			finalLeft			 = 		(windowWidth - finalWidth)/2,
+			finalLeft			 = 		(finalWidth)/2,
 			finalHeight			 = 		finalWidth*heightSelected/widthSelected,
 			finalTop			 = 		(windowHeight - finalHeight)/2,
 			closingScale		=		3;		// scale factor for closing animation
+		
+		
+		if(Modernizr.mq('screen and (max-width: 40rem)')) {	// mobile 
+//			resizeProjectOpen();
+			projectOpenLeftNew =  ($(window).width())/8;
+			projectOpenTopNew = ($(window).height())/8;
+			projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth) 
+							? $(window).width()*0.8 
+							: $projectOpenWidth;
+		}
 
 		if(animationType == 'open') {
 			parentProjectItem.addClass('project-empty');		// add empty placeholder
@@ -251,7 +260,7 @@ $(document).ready(function($){
 
 	/**
 	 * @description 								changes the 'top', 'left' and 'width' css values of $projectOpen; <br>
-	 *												invoked on windows.resize()
+	 *												invoked on window.resize()
 	 * @method resizeProjectOpen
 	 * 
 	 */
@@ -261,6 +270,11 @@ $(document).ready(function($){
 		projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth) 
 							? $(window).width()*0.8 
 							: $projectOpenWidth;
+		
+		if(Modernizr.mq('screen and (max-width: 40rem)')) {	// mobile 
+			projectOpenLeftNew =  $(window).width()/8;
+			projectOpenTopNew = $(window).height()/8;  
+		}
 						
 		$projectOpen.css({
 		    'top': projectOpenTopNew +'px',
