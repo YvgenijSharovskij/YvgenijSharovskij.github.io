@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<projectOpenContainer> 
+    <projectOpen id="project-1" label="N5_Kanji_Grid">        
+  		 <imgSource> ../img/project-item-N5.png</imgSource>
+   		 <title>N5 Kanji Grid:</title>
+   		 <projectDescription>A grid of JLPT N5 kanji based on the pre-2010 exams using WebVR with Three.js. The interesting thing here is the
+   		 use of two renderers for CSS3D and WebGL. Note that only a single camera is used with OrbitalControls; there's no child camera for VrControls. </projectDescription>
+   		 <button>N5 Kanji Grid</button>
+   		 <buttonHref>https://jlptn5-kanji.github.io/</buttonHref>
+    </projectOpen>
+    <projectOpen id="project-2" label="Dilution Calculator">        
+       		<imgSource> ../img/project-item-Dilution.png</imgSource>
+        	<title>Dilution Calculator</title>
+        	<projectDescription>An exceedingly simple Android Java app to calculate dilutions based on the standard formula C1V1 = C2V2, where C1 is the initial
+        	concentration, C2 the final concentration, V1 the initial volume, and V2 the final volume.  </projectDescription>
+        	<button>Dilution Calculator</button >
+   		 	<buttonHref>#0</buttonHref>
+    </projectOpen>
+        <projectOpen id="project-empty0" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+    <projectOpen id="project-empty1" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty2" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty3" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty4" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty5" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty6" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty7" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+   	    <projectOpen id="project-empty8" label="project-empty">        
+       		<imgSource> ../img/project-item-empty.png</imgSource>
+        	<title>Project title empty:</title>
+        	<projectDescription>This project has not been uploaded yet.</projectDescription>
+        	<button>project-empty</button >
+   		 	<buttonHref>#0</buttonHref>
+   	</projectOpen>
+</projectOpenContainer>
+
+
