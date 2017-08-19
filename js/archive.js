@@ -23,7 +23,7 @@ $(document).ready(function($){
 	  	projectOpenTopNew  	 		 = 	 	0,																// set on resize()
 	  	projectOpenWidthNew			= 	 	0,															// set on resize()
 //		$closeX 			 						=   	$('.close-x'),										// css "X" for closing
-		tempId				 						=   	0,															// href anchor
+//		tempId				 						=   	0,															// href anchor
 		$projectContainerLinks			=		$('.projects-container a'),
 		$onScrollAnimate 					= 		$('.onScroll-animate'),
 		// hammer.js (without JQuery plugin):
@@ -35,16 +35,75 @@ $(document).ready(function($){
 	//  project-open
 	//
 	// ================================================================================================================
+	
 		
 	// open project
 	$projectContainerLinks.on('click', function(){
-		var id = $(this).attr('href'),
-			projectItemImg = $(this).parent('.project-item').children('img');
+		var id = '#' + $(this).attr('id'),
+		       projectItemImg = $(this).parent('.project-item').children('img');
 
 		$body.addClass('overlay-layer');	// clickable overlay
-		velocityProjectOpen(projectItemImg, openLeftWidth, $projectOpenWidth, 'open', id);
+	
+		$.ajax({
+		type: "GET",
+		url: "archive.xml",
+		dataType: "xml",
+		success: function(xml){ 
+			$('projectOpen' +  id, xml).each(function()  {	// Note: $('test', xml) is a shorthand for $(xml).find('test').				 
+																							//  a for each loop is not strictly required
+				
+				//var id = $(this).attr('id');	// get xml <projectOpen> id attribute 
+				
+				var imgSource = $(this).find('imgSource').text();	
+				$('<img/>') 
+					.addClass('open-left-img')
+					.attr("src", imgSource)
+					.appendTo('.open-left');
+
+				
+				var title = $(this).find('title').text();
+				$('<span/>')
+					.addClass('project-title')
+					.text(title)
+					.appendTo('.project-info');
+
+				var projectDescription = $(this).find('projectDescription').text();
+				$('<p/>') 
+					.addClass('project-description')
+					.text(projectDescription)
+					.appendTo('.project-info');
+				
+				var button  = $(this).find('button').text(); 
+				var buttonHref  = $(this).find('buttonHref').text(); 
+				$('<a/>')  
+					.addClass('button')
+					.attr('href', buttonHref)
+					.text(button)
+					.appendTo('.project-info');
+				
+				
+				/*
+				console.log('$.ajax ===========================================================================================================');
+				console.log('xml id ' + id);
+				console.log('imgSource ' + imgSource);
+				console.log('xml_title ' + title);
+				console.log('projectDescription ' + projectDescription);
+				console.log('button ' + button);
+				console.log('================================================================================================================');
+				*/
+				
+
+		});
+		},
+		error: function() {
+			alert("An error occurred while processing the XML file.");
+		}
+	});
+	
+		velocityProjectOpen(projectItemImg, openLeftWidth, $projectOpenWidth, 'open'); 	
 	});
 
+	
 	// close project
 	$body.on('click', function(event){
 		if($(event.target).is('.close-x') || 
@@ -56,7 +115,7 @@ $(document).ready(function($){
 	
 	// keyboard press override
 	$(document).keyup(function(event){
-    	if($projectOpen.hasClass('is-visible') && event.which == '27') {	// KEY = ESC
+    	if($projectOpen.hasClass('is-visible') && event.which === '27') {	// KEY = ESC
 			closeProject(openLeftWidth, $projectOpenWidth);
 		}
 	});
@@ -64,14 +123,7 @@ $(document).ready(function($){
 	// close on horizontal swipe
 	hammer.on("swipe", function() {
     	if($projectOpen.hasClass('is-visible')) {	
-		
 			closeProject(openLeftWidth, $projectOpenWidth);
-			
-//			$projectOpen.velocity({
-//			    'left': -10 +'px',
-//			}, 300);
-//			
-			
 		}
 	});
 
@@ -88,11 +140,19 @@ $(document).ready(function($){
 	 */
 	function closeProject(finalWidth, $projectOpenWidth) { 
 		var projectItemImg = $('.project-empty').find('img');
+		
+		// clean up xml data
+		 //$('.open-left-img').remove(); 
+		 $('.project-title').remove(); 
+		$('.project-description').remove(); 
+		$('.button').remove(); 
+		
 
 		if($projectOpen.hasClass('add-info')) {		// .add-info animation is started
-			velocityProjectOpen(projectItemImg, finalWidth, $projectOpenWidth, 'close', tempId);
+			velocityProjectOpen(projectItemImg, finalWidth, $projectOpenWidth, 'close');
 		} else {
 			closeProjectQuick(projectItemImg, finalWidth, $projectOpenWidth);
+			$('.open-left-img').remove(); 
 		}
 	}
 	
@@ -112,8 +172,7 @@ $(document).ready(function($){
 	function closeProjectQuick(image, finalWidth, $projectOpenWidth) { 
 		var parentProjectItem = image.parent('.project-item'),
 			topSelected = image.offset().top - $(window).scrollTop(),
-			leftSelected = image.offset().left,
-			widthSelected = image.width();
+			leftSelected = image.offset().left;
 
 		$body.removeClass('overlay-layer');
 		$projectOpen.velocity('stop').removeClass('add-info open-animate is-visible').css({
@@ -141,15 +200,15 @@ $(document).ready(function($){
 	 * @param {number}  tempId		 			- 	 		attr('href') of $projectContainerLinks
 	 *
 	 */
-	function velocityProjectOpen(image, finalWidth, $projectOpenWidth, animationType, tempId) {
+	function velocityProjectOpen(image, finalWidth, $projectOpenWidth, animationType) {
 		var parentProjectItem	 = 		image.parent('.project-item'),
-			windowHeight		 = 		$(window).height(),
+			//windowHeight		 = 		$(window).height(),
 			topSelected 		 = 		image.offset().top - $(window).scrollTop(),
 			leftSelected 		 = 		image.offset().left,
 			widthSelected 		 = 		image.width(),
-			heightSelected		 = 		image.height(),
+			//heightSelected		 = 		image.height(),
 			finalLeft			 = 		finalWidth/2,
-			finalHeight			 = 		finalWidth*heightSelected/widthSelected,
+			//finalHeight			 = 		finalWidth*heightSelected/widthSelected,
 			closingScale		=		3;		// scale factor for closing animation
 		
 		
@@ -157,9 +216,9 @@ $(document).ready(function($){
 			setResizeProject();
 		}
 
-		if(animationType == 'open') {
+		if(animationType === 'open') {
 			parentProjectItem.addClass('project-empty');		// add empty placeholder
-			$(''+tempId+'').css({							 	// set project dimensions
+			 $projectOpen.css({							 	// set project dimensions
 				'opacity' : 1,
 			    'top': topSelected + 'px',
 			    'left': leftSelected + 'px',
@@ -169,16 +228,17 @@ $(document).ready(function($){
 			    'left': finalLeft +'px',
 			    'width': finalWidth +'px',
 			}, 900, [400, 20], function(){					
-				$(''+tempId+'').addClass('open-animate').velocity({ 
+				 $projectOpen.addClass('open-animate').velocity({ 
 					'top': projectOpenTopNew + 'px',
 					'left': projectOpenLeftNew + 'px',
 			    	'width': projectOpenWidthNew + 'px',
 				}, 300, 'ease-in' ,function(){					// we must go deeper...
-					$(''+tempId+'').addClass('add-info');		// project-right content, also animated
+					 $projectOpen.addClass('add-info');		// project-right content, also animated
+					// ...
 					//$('.project-label').addClass('is-hidden'); 		
 				});
 			}).addClass('is-visible');
-		} else if(animationType == 'close') {		// tempId is not needed
+		} else if(animationType  === 'close') {		// tempId is not needed
 			$projectOpen.removeClass('add-info').velocity({
 			    'top': projectOpenTopNew + 'px',
 			    'left': finalLeft+'px',
@@ -191,6 +251,7 @@ $(document).ready(function($){
 					'opacity' : 0,
 				}, 300, 'linear', function(){	
 					$projectOpen.removeClass('is-visible');
+						$('.open-left-img').remove(); 
 						parentProjectItem.removeClass('project-empty');
 				});	
 			});
@@ -278,11 +339,9 @@ $(document).ready(function($){
 	//		projectOpenTopNew = ($(window).height() - $projectOpen.height())/2;
 			projectOpenLeftNew = ($(window).width())/8;
 			projectOpenTopNew = ($(window).height())/8;
-			projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth) 
-								? $(window).width()*0.8 
-								: $projectOpenWidth;
+			projectOpenWidthNew = ($(window).width()*0.8 < $projectOpenWidth)  ?  $(window).width()*0.8  :  $projectOpenWidth;
 	}
-	
+
 });
 
 
