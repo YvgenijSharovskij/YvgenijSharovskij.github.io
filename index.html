@@ -28,6 +28,7 @@
       <ul>
       	<li class="off-canvas-header closeMobile" aria-label="close">close</li>
 		<li><a href="#Java">Java</a></li>
+		  <li><a href="#VR">VR</a></li>
 		<li><a href="#VBA">VBA</a></li>
 		<li><a href="#web-design">web design</a></li>
     	<li><a href="#databases">databases</a></li>
@@ -76,6 +77,7 @@
 	<nav class="secondary-nav" role="navigation">
 		<ul id="navigation">
 			<li><a href="#Java">Java</a></li>
+			<li><a href="#VR">VR</a></li>
 			<li><a href="#VBA">VBA</a></li>
 			<li><a href="#web-design">web design</a></li>
         	<li><a href="#databases">databases</a></li>
@@ -95,14 +97,16 @@
 	</div> <!-- fixed-bg -->
 	<div class="scrolling-bg color-0" id="intro">
 		<article class="container" role="main">
-			<p> This is a placeholder site for my general GitHub account that gives an overview of some of my projects involving Java, VBA, 
-                web design, databases, bash shell and R programming. This mainly includes recyclable code
+			<p> This is a placeholder site for my general GitHub account that gives an overview of some of my projects involving Java, C#, VBA, 
+                web design, databases, bash shell and R programming. This includes recyclable code
                 that has been salvaged from other, larger, projects for repeated use elsewhere. Also included are
                 notes from books, saved here for quick access and reference. Larger
-                projects have their own GitHub pages. Smaller works, such as  Windows PowerShell scripts and 
+                projects have their own GitHub pages, whereas smaller works, such as  Windows PowerShell scripts and 
                 <a href="https://github.com/YvgenijSharovskij/LaTeX_templates">LaTeX templates</a>,
-                on the other hand, scarcely deserve their own pages, and can be found on my main GitHub account.</p>
+                scarcely deserve their own pages and can be found on my main GitHub account.</p>
            <br>   
+		   <p>The latest project is the Android Java app "<a href="https://play.google.com/store/apps/details?id=com.dev.yvgenijsharovskij.n5kanjiandkanjistoryquiz">N5 Kanji 	&amp; Kanji Story quiz</a>", which is available on Google Play. The JavaDoc is available <a href="https://github.com/YvgenijSharovskij/Android-Java/tree/master/N5KanjiAndKanjiStoryQuiz/JavaDoc">here</a>. </p>
+		  <br> 
            <p> This website itself is an example of current web design practices, 
                and includes plenty of recyclable JQuery functions and SASS mixins, all suitable as templates 
                for future websites.
@@ -131,13 +135,35 @@
             <a href="https://github.com/YvgenijSharovskij/Android-Java" class="button onScroll-animate slide-left">Java projects</a>
 		</article> <!-- container -->
 	</div> <!-- scrolling-bg -->
-<!-- SECTION -------------------------------------------------------------------------------------------------------->			
+	<!-- SECTION -------------------------------------------------------------------------------------------------------->			
 	<div class="fixed-bg bg-2">
+    <section id="VR" class="section">
+    </section>
+	</div> <!-- fixed-bg -->
+	<div class="scrolling-bg color-2">
+		<article class="container" role="main">
+			<p>This section is dedicated to VR projects. Aside from the WebVR <a href="https://jlptn5-kanji.github.io/">N5 Kanji grid</a> site,
+				the focus here is primarily on the Oculus Rift VR. The main engine used is the Unity3D engine. 			
+				Even though the Unreal Engine tends to produce better graphics than Unity, it is based on
+				C++ instead of C#, which makes migration from Android Java relatively more laborious. Moreover, there is a myriad of (free)
+				assets with easily implemented boilerplate available for Unity, which is something that UE simply can't compete with.
+			</p>
+			 <br> 
+			<p>Having said that, I might migrate from Oculus Rift with Unity to another HMD and engine. I currently have the
+				Oculus Rift CV1 (i.e., commercial version 1), which is getting somewhat dated as it does not integrate FOV rendering, Tobii eye-tracking with improved
+				vergence accommodation, inside-out tracking, <em>etc</em>, &#8212; all of which generally results in poor performance and necessitates frequent asynchronous timewarp rending with calculated intermediary frames.
+			</p>
+            <br>    
+            <a href="https://github.com/YvgenijSharovskij/VR" class="button onScroll-animate slide-left">VR projects</a>
+		</article> <!-- container -->
+	</div> <!-- scrolling-bg -->
+<!-- SECTION -------------------------------------------------------------------------------------------------------->			
+	<div class="fixed-bg bg-3">
         <section id="VBA" class="section">
 			<h1>VBA</h1>
         </section>
 	</div> <!-- fixed-bg -->
-	<div class="scrolling-bg color-2">
+	<div class="scrolling-bg color-3">
 		<article class="container" role="main">
 			<p> VBA (Visual Basic for Applications) is the widely popular programming language derived from BASIC.
             	VBA is first compiled into MS P-code, or packed code, as an intermediate language which can be used
@@ -150,12 +176,12 @@
 		</article> <!-- container -->
 	</div> <!-- scrolling-bg -->
 <!-- SECTION -------------------------------------------------------------------------------------------------------->
-	<div class="fixed-bg bg-3">
+	<div class="fixed-bg bg-4">
     	<section id="web-design" class="section">
 			<h1>Web design</h1>
         </section>
 	</div> <!-- fixed-bg -->
-	<div class="scrolling-bg color-3">
+	<div class="scrolling-bg color-4">
 		<article class="container" role="main">
 			<p> One of the first books I had picked up on web design started with some JavaScript code to detect if
             	the user browser was NN (Netscape Navigator) or IE (this abbreviation, for the time being, is still used).
@@ -190,12 +216,12 @@
 		</article> <!-- container -->
 	</div> <!-- scrolling-bg -->
 <!-- SECTION -------------------------------------------------------------------------------------------------------->
-	<div class="fixed-bg bg-4">
+	<div class="fixed-bg bg-5">
     	<section id="databases" class="section">
 			<h1>Databases</h1>
         </section>
 		</div> <!-- fixed-bg -->
-    <div class="scrolling-bg color-4">
+    <div class="scrolling-bg color-5">
 		<article class="container" role="main">
 			<p> Originally developed in 1970s from <a href="https://en.wikipedia.org/wiki/Tuple">tuple</a> relational 
             	calculus, databases form an integral part of many companies as well as personal systems. 
@@ -210,12 +236,12 @@
 		</article> <!-- container -->
 	</div> <!-- scrolling-bg -->
 <!-- SECTION -------------------------------------------------------------------------------------------------------->
-	<div class="fixed-bg bg-5">
+	<div class="fixed-bg bg-6">
     	<section id="bash" class="section">
 			<h1>#!/bin/bash</h1>
         </section>
 	</div> <!-- fixed-bg -->
-    <div class="scrolling-bg color-5">
+    <div class="scrolling-bg color-6">
 		<article class="container" role="main">
 			<p> Bash (Bourne Again Shell) is the popular Unix command shell with its roots back in 1989.
             	It can be combined with C-style programming, better known as the csh shell. And with the 2016 Windows 
@@ -230,12 +256,12 @@
 		</article> <!-- container -->
 	</div> <!-- scrolling-bg -->
 <!-- SECTION -------------------------------------------------------------------------------------------------------->
-	<div class="fixed-bg bg-6">
+	<div class="fixed-bg bg-7">
 		<section id="R" class="section">
 			<h1>R</h1>
        </section>
 	</div> <!-- fixed-bg -->
-    <div class="scrolling-bg color-6" >
+    <div class="scrolling-bg color-7" >
 
 		<article class="container" role="main">
 			<p> R was released by <a href="https://www.stat.auckland.ac.nz/~ihaka/">R. Ihaka</a> and R. Gentleman 
@@ -304,7 +330,7 @@
                   plug-in; see the webp.js file in the root folder</li>
     		<li> SVG graphics were made in Adobe Illustrator and 
         	 	 compressed using <a href="http://petercollingridge.appspot.com/svg-optimiser">Peter Collingridge's optimiser</a> </li>
-        	<li> non-SVG graphics were edited in Adobe PhotoShop; edited screenshots of Android Studio, 
+        	<li> non-SVG graphics were edited in Adobe PhotoShop; edited screenshots of Android Studio, Unity3D, 
         	 	 MS Excel, Adobe Dreamweaver, MS SQL Server Enterprise, Ubuntu command prompt and RStudio were used (fair use)</li>
         	<li> an inline SVG sprite is used to allow re-use of the navigation icons and SVG CSS styles, as well as
                  to avoid additional HTTP/1 requests (HTTP/2 supports binary frames multiplexing through a single 
@@ -407,7 +433,7 @@
 		</ul>
 </div> <!-- footer-links -->
 <div class="footer-copy">
-	<p>Yvgenij Sharovskij &copy; 2017</p>
+	<p>Yvgenij Sharovskij &copy; 2017-</p>
 </div>     
 </footer> <!-- footer-container -->
 
