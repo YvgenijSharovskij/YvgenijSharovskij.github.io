@@ -233,11 +233,12 @@ code.css-value {
 	
 	@include bg-srcset(bg-0, background-top);
 	@include bg-srcset(bg-1, background-java);
-	@include bg-srcset(bg-2, background-vba);
-	@include bg-srcset(bg-3, background-webdesign);
-	@include bg-srcset(bg-4, background-sql);
-	@include bg-srcset(bg-5, background-bash);
-	@include bg-srcset(bg-6, background-R);
+	@include bg-srcset(bg-2, background-vr);
+	@include bg-srcset(bg-3, background-vba);
+	@include bg-srcset(bg-4, background-webdesign);
+	@include bg-srcset(bg-5, background-sql);
+	@include bg-srcset(bg-6, background-bash);
+	@include bg-srcset(bg-7, background-R);
 
 	@include MQmax(M) {
 		background-attachment: scroll; 
@@ -263,27 +264,32 @@ code.css-value {
 		background-color: $color-1;
 		color: lighten($color-1, 40%);
 	}
-
+	
 	&.color-2 {
-		background-color: $color-1;
-		color: lighten($color-1, 40%);
+		background-color: $color-2-1;
+		color: lighten($color-2-1, 40%);
 	}
 
 	&.color-3 {
 		background-color: $color-1;
 		color: lighten($color-1, 40%);
 	}
-	
+
 	&.color-4 {
 		background-color: $color-1;
 		color: lighten($color-1, 40%);
 	}
 	
 	&.color-5 {
+		background-color: $color-1;
+		color: lighten($color-1, 40%);
+	}
+	
+	&.color-6 {
 		background-color: $color-2;
 		color: lighten($color-1, 40%);
 	}
-	&.color-6 {
+	&.color-7 {
 		background-color: $color-1;
 		color: lighten($color-1, 40%);
 	}
