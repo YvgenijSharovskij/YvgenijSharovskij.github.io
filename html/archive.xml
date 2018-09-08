@@ -16,12 +16,14 @@
         	<button>Dilution Calculator</button>
    		 	<buttonHref>https://github.com/YvgenijSharovskij/Android-Java/tree/master/Dilution_Calculator_v0</buttonHref>
     </projectOpen>
-        <projectOpen id="project-empty0" label="project-empty">        
-       		<imgSource> ../img/project-item-empty.png</imgSource>
-        	<title>Project title empty:</title>
-        	<projectDescription>This project has not been uploaded yet.</projectDescription>
-        	<button>project-empty</button>
-   		 	<buttonHref>#0</buttonHref>
+        <projectOpen id="project-3" label="project-empty">        
+       		<imgSource> ../img/project-item-N5-quiz.png</imgSource>
+        	<title>N5 Kanji &amp; and Kanji Story quiz:</title>
+        	<projectDescription>This is my most advanced Android Java project to date: a  JPLT N5 Kanji &amp; Kanji Story multiple-choice quiz app, available on Google Play store.
+				This app consist of 95 Java classes spread across 7 packages,  with a total of  54,039 lines of code (excluding the XML resources). 
+			</projectDescription>
+        	<button>Go to Google Play</button>
+   		 	<buttonHref>https://play.google.com/store/apps/details?id=com.dev.yvgenijsharovskij.n5kanjiandkanjistoryquiz</buttonHref>
    	</projectOpen>
     <projectOpen id="project-empty1" label="project-empty">        
        		<imgSource> ../img/project-item-empty.png</imgSource>
