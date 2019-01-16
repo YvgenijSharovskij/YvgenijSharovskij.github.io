@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.dev.yvgenijsharovskij.n5kanjiandkanjistoryquiz",
+    "sha256_cert_fingerprints":
+    ["9F:61:73:1B:D7:F0:16:F8:11:D1:BA:0E:A3:11:E4:00:59:6F:59:C9:48:1F:C8:CA:AB:56:FF:EA:AA:4B:5F:51"]
+  }
+}]
