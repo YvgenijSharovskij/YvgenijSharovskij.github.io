@@ -22,5 +22,17 @@
         "38:7B:A7:E7:F4:DC:5F:0C:AE:CA:48:86:D5:96:9A:54:05:52:35:74:18:50:34:48:A4:AA:2F:B5:D6:24:AA:3F"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dev.yvgenijsharovskij.jyouyouquiz",
+      "sha256_cert_fingerprints": [
+        "84:11:4F:4F:55:5C:2E:40:A4:09:05:3E:71:D7:67:7D:D2:44:C9:E7:0C:E4:CF:9D:F7:08:AB:7B:E0:DD:33:A0"
+      ]
+    }
   }
 ]
