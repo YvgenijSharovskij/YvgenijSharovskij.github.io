@@ -34,5 +34,18 @@
         "84:11:4F:4F:55:5C:2E:40:A4:09:05:3E:71:D7:67:7D:D2:44:C9:E7:0C:E4:CF:9D:F7:08:AB:7B:E0:DD:33:A0"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dev.yvgenijsharovskij.radicalsquiz",
+      "sha256_cert_fingerprints": [
+        "79:98:3E:4D:AA:6B:16:A5:20:A2:D9:64:3B:34:91:C1:7D:AE:E8:FC:61:BF:F9:95:BB:D7:D1:25:ED:D5:4F:C7"
+      ]
+    }
   }
+]
 ]
