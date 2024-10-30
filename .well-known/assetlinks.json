@@ -1,9 +1,26 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.dev.yvgenijsharovskij.n5kanjiandkanjistoryquiz",
-    "sha256_cert_fingerprints":
-    ["9F:61:73:1B:D7:F0:16:F8:11:D1:BA:0E:A3:11:E4:00:59:6F:59:C9:48:1F:C8:CA:AB:56:FF:EA:AA:4B:5F:51"]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dev.yvgenijsharovskij.n5kanjiandkanjistoryquiz",
+      "sha256_cert_fingerprints": [
+        "9F:61:73:1B:D7:F0:16:F8:11:D1:BA:0E:A3:11:E4:00:59:6F:59:C9:48:1F:C8:CA:AB:56:FF:EA:AA:4B:5F:51"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dev.yvgenijsharovskij.n3kanjiquiz",
+      "sha256_cert_fingerprints": [
+        "38:7B:A7:E7:F4:DC:5F:0C:AE:CA:48:86:D5:96:9A:54:05:52:35:74:18:50:34:48:A4:AA:2F:B5:D6:24:AA:3F"
+      ]
+    }
   }
-}]
+]
